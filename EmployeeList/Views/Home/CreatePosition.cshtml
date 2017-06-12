@@ -1,0 +1,32 @@
+﻿@model EmployeeList.Models.Position
+
+@{
+    ViewBag.Title = "Добавление должности";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавление новой должности</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Должность</legend>
+
+        <p>
+            Название должности<br />
+            @Html.EditorFor(model => model.NamePost)
+        </p>
+
+        <p>
+            Зарплата <br />
+            @Html.EditorFor(model => model.Salary)
+        </p>
+
+        <p>
+            <input type="submit" value="Добавить должность" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку должностей", "PositionDetails")
+</div>

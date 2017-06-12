@@ -1,0 +1,42 @@
+﻿<Window x:Class="EmployeeListWin.Window.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeListWin.Window"
+        mc:Ignorable="d"
+        Title="StatisticsWindow" Height="300" Width="600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="20 8 20 8" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </Window.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="231*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="6,0">
+            <Button x:Name="createMainWindow" Content="Сотрудники" Click="createMainWindow_Click" />
+            <Button x:Name="createListPosition" Content="Должности" Click="createListPosition_Click" />
+        </StackPanel>
+        <TextBox HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" 
+                 Text="Количество сотрудников" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="countEmployee" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap"  Width="154" Grid.ColumnSpan="2" Margin="0,27,0,170"/>
+        <TextBox HorizontalAlignment="Left" Height="27" Margin="30,0,0,0" TextWrapping="Wrap" 
+                 Text="Текущие вакансии" VerticalAlignment="Top" Width="318" Grid.Column="1"/>
+        <TextBox x:Name="currentPosition" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="30,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="318"/>
+        <TextBox HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" 
+                 Text="Средняя зарплата" VerticalAlignment="Top" Width="122" Grid.Column="1" Margin="346,0,0,0" RenderTransformOrigin="0.503,2.834"/>
+        <TextBox x:Name="averageSalary" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="348,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,34 @@
+﻿@model EmployeeList.Models.Position
+@{
+    ViewBag.Title = "Изменить должность";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Изменение должности</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Должность</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <p>
+            ФИО сотрудника <br />
+            @Html.EditorFor(model => model.NamePost)
+        </p>
+
+        <p>
+            Дата рождения <br />
+            @Html.EditorFor(model => model.Salary)
+        </p>
+
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Вернуться к списку должностей", "PositionDetails")
+</div>
+

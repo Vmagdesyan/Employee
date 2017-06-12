@@ -1,0 +1,26 @@
+﻿@model EmployeeList.Models.Employee
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Удаление сотрудника</h2>
+<dl>
+    <dt>ФИО</dt>
+    <dd>
+        @Html.DisplayFor(model => model.FIO)
+    </dd>
+
+    <dt>Дата рождения</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Birthday)
+    </dd>
+
+    <dt>Должность</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Position.NamePost)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}

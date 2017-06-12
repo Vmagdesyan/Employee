@@ -1,0 +1,53 @@
+﻿@model EmployeeList.Models.Employee
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Изменение сотрудника</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Сотрудник</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <p>
+            ФИО сотрудника <br />
+            @Html.EditorFor(model => model.FIO)
+        </p>
+
+        <p>
+            Дата рождения <br />
+            @Html.EditorFor(model => model.Birthday)
+        </p>
+
+        <p>
+            Дата приема на работу  <br />
+            @Html.EditorFor(model => model.DateInPost)
+        </p>
+        <p>
+            Отдел <br />
+            @Html.EditorFor(model => model.Department)
+        </p>
+        <p>
+            E-Mail <br />
+            @Html.EditorFor(model => model.EMail)
+        </p>
+        <p>
+            Телефонный номер <br />
+            @Html.EditorFor(model => model.TelNumber)
+        </p>
+        <p>
+            Должность <br />
+            @Html.DropDownListFor(model => model.PositionId, ViewBag.Positions as SelectList)
+        </p>
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Вернуться к списку сотрудников", "Index")
+</div>
+

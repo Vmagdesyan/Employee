@@ -1,0 +1,22 @@
+﻿@model EmployeeList.Models.Employee
+
+@{
+    ViewBag.Title = "Статистика";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Статистика</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+
+        <p>Количество сотрудников<br/> @Html.Display("countEmployee")</p>
+        <p>Вакансии              <br/> @Html.Display("vacancyEmployee")</p>
+        <p>Зарплата              <br/> @Html.Display("salaryEmployee")</p>
+
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку сотрудников", "Index")
+</div>

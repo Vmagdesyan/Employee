@@ -1,0 +1,39 @@
+﻿@using EmployeeList.Models
+@model IEnumerable<EmployeeList.Models.Position> 
+<link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Каталог должностей</h2>
+<p>
+    @Html.ActionLink("Добавить должность", "CreatePosition")
+</p>
+<table>
+    <tr>
+        <th>Должность</th>
+        <th>Зарплата</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamePost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "EditPosition", new { Id = item.Id }) 
+                @Html.ActionLink("Удалить", "DeletePosition", new { Id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Каталог сотрудников", "Index")
+    @Html.ActionLink("Каталог должностей", "PositionDetails")
+</p>
+
+

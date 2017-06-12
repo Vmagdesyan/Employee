@@ -1,0 +1,72 @@
+﻿<Window x:Class="EmployeeListWin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeListWin"
+        xmlns:dg="http://schemas.microsoft.com/xps/2005/06"
+        mc:Ignorable="d"
+        Title="Сотрудники" Height="550" Width="1025">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="20 8 20 8" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </Window.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" x:Name="employeeGrid" Margin="0,0,0,49">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding FIO}" Header="ФИО" Width="200"/>
+                <DataGridTemplateColumn x:Name="BirthdayColumn" Header="День рождения" Width="125">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Birthday, StringFormat=\{0:dd.MM.yyyy\} }" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Birthday, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="DateInPostColumn" Header="Дата приема на работу" Width="145">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DateInPost, StringFormat=\{0:dd.MM.yyyy\} }" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateInPost, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn x:Name="positionColumn" Header="Должность"  SelectedValueBinding="{Binding PositionId}" 
+                                        DisplayMemberPath="NamePost" SelectedValuePath="Id" Width="150" />
+                <DataGridTextColumn Binding="{Binding Department}" Header="Отдел" Width="150"/>
+                <DataGridTextColumn Binding="{Binding EMail}" Header="E-Mail" Width="100"/>
+                <DataGridTextColumn Binding="{Binding TelNumber}" Header="Телефонный номер" Width="130"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="updateButton" Content="Обновить" Click="updateButton_Click" />
+            <Button x:Name="deleteButton" Content="Удалить" Click="deleteButton_Click" />
+            <Button x:Name="createListPosition" Content="Должности" Click="createListPosition_Click" />
+            <Button x:Name="createStatisticsWindow" Content="Показать статистику" Click="createStatisticsWindow_Click" Width="138" />
+
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left"  Margin="18,441,0,0" TextWrapping="Wrap" Text="Введите ФИО:" VerticalAlignment="Top" RenderTransformOrigin="-0.68,-0.312" Width="100" Height="23"/>
+        <TextBlock HorizontalAlignment="Left" Margin="321,441,0,0" TextWrapping="Wrap" Text="Введите должность:" VerticalAlignment="Top" Height="23" Width="123"/>
+        <TextBox x:Name="searchFIO" HorizontalAlignment="Left" Height="23" Margin="107,441,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="209"/>
+        <ComboBox x:Name="searchPosition"  ItemsSource="{Binding PositionId}" DisplayMemberPath="NamePost" SelectedValuePath="Id"  HorizontalAlignment="Left" 
+                  Height="23" Margin="444,441,0,0" Text="" VerticalAlignment="Top" Width="209"/>
+        <Button x:Name="searchEmployee" Content="Искать" HorizontalAlignment="Left" Margin="668,436,0,0" VerticalAlignment="Top" Width="126" Click="searchEmployeeClick_Click" />
+        <Button x:Name="refreshEmployee" Content="Сброс поиска" HorizontalAlignment="Left" Margin="830,436,0,0" VerticalAlignment="Top" Width="126" Click="refreshEmployee_Click" />
+    </Grid>
+</Window>

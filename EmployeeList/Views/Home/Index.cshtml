@@ -1,0 +1,66 @@
+﻿@model IEnumerable<EmployeeList.Models.Employee>
+@{
+    ViewBag.Title = "Каталог сотрудников";
+}
+<link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+<h2>Каталог сотрудников</h2>
+<p>
+    @Html.ActionLink("Принять сотрудника", "Create")
+</p>
+<table >
+    <tr>
+        <th>ФИО</th>
+        <th>Дата рождения</th>
+        <th>Дата приема на работу</th>
+        <th>Должность</th>
+        <th>Отдел</th>
+        <th>E-Mail</th>
+        <th>Телефон</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateInPost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.NamePost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id })
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Каталог сотрудников", "Index", new { @class = "button" })
+    
+</p>
+<p>
+   @Html.ActionLink("Каталог должностей", "PositionDetails")
+
+</p>
+<p>
+
+    @Html.ActionLink("Поиск сотрудников", "Search", "Home")
+
+</p>
+<p>@Html.ActionLink("Статистика", "getStatistics")</p>
